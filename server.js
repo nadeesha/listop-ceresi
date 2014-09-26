@@ -99,6 +99,8 @@ app.get('/api/v1/npm/packages', function(req, res) {
     res.send(200, {
         packages: require('./package.json').dependencies
     });
+
+    delete require.cache[require.resolve('./package.json')];
 });
 
 app.get('/api/v1/tasks/:refid', function(req, res) {
